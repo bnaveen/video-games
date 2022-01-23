@@ -5,22 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { GaugeModule } from 'angular-gauge';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
-import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HomeComponent } from './home/home.component';
-import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
-import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBarComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,19 +34,13 @@ import { HttpErrorsInterceptor } from './interceptors/http-errors.interceptor';
     MatTabsModule,
     MatIconModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule,
+    MatGridListModule,
+    MatListModule,
+    MatToolbarModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpHeadersInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorsInterceptor,
-      multi: true,
-    }
   ],
   bootstrap: [AppComponent]
 })
